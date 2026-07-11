@@ -1,0 +1,6 @@
+Respuestas:
+1. Utilicé GitHub Copilot y Gemini de Google
+2. A GitHub Copilot le pedí que me generara el diseño visual, mientras q ue a Gemini le solicité que me guiara a estructurar la app de Registro de atención Veterinaria manteniendo las funciones separadas para cumplir con los requisitos técnicos de la guía 
+3. Algunas sugerencias fueron separar las responsabilidades en funciones independientes, como registrarMascota, validarFormulario, mostrarMascotas, para manipular el Dom usando createElement() y appendChild() para las tarjetas de las mascotas
+4. Utilicé la estructura lógica sugerida que me recomendó, adaptando los noombres de los campos de texto
+5. Considero que es fundamental revisar las respuestas, porque la Ia puede entregar estructuras decódigo complejas o muy avanzadas a mi nivel actual de aprendizajde. Al revisar estas respuestas, puedo asegurarme de ocmprender la lógica que estamos aplicando para evitar errores de sintaxis y garantizar que cumpla con los criterios de la pauta de evaluación

@@ -4,19 +4,172 @@
     <meta charset="UTF-8">
     <title>Registro de Atención Veterinaria</title>
     <style>
-        /* Diseño  */
-        body { font-family: Arial, sans-serif; margin: 20px; background-color: #f4f4f4; }
-        .contenedor { max-width: 600px; background: white; padding: 20px; border-radius: 8px; }
-        .campo { margin-bottom: 12px; }
-        label { display: block; font-weight: bold; }
-        input, select { width: 100%; padding: 8px; margin-top: 5px; box-sizing: border-box; }
-        button { background-color: #007bff; color: white; border: none; padding: 10px; cursor: pointer; width: 100%; font-size: 16px; }
-        button:hover { background-color: #0056b3; }
-        .error { color: red; font-weight: bold; margin-bottom: 15px; display: none; }
-        .mascota-card { border: 1px solid #ccc; padding: 10px; margin-top: 10px; border-radius: 5px; background: #fafafa; }
-        .btn-atender { background-color: #28a745; width: auto; margin-top: 5px; padding: 5px 10px; }
-        .btn-atender:hover { background-color: #218838; }
-        .estadisticas { margin-top: 20px; background: #e9ecef; padding: 10px; border-radius: 5px; }
+        /* Fondo general en tono lila/morado pastel muy suave */
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            margin: 0; 
+            padding: 30px 10px;
+            background-color: #f3effa; 
+            color: #4a3b5c;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* Tarjeta contenedora principal blanca con bordes suaves */
+        .contenedor { 
+            width: 100%;
+            max-width: 550px; 
+            background: #ffffff; 
+            padding: 30px; 
+            border-radius: 16px; 
+            box-shadow: 0 8px 24px rgba(147, 112, 219, 0.15);
+        }
+
+        h1 {
+            color: #6f42c1;
+            font-size: 24px;
+            text-align: center;
+            margin-top: 0;
+            margin-bottom: 25px;
+        }
+
+        h2 {
+            color: #6f42c1;
+            font-size: 20px;
+            margin-top: 30px;
+            border-bottom: 2px solid #e8def8;
+            padding-bottom: 8px;
+        }
+
+        /* Recuadros bonitos para agrupar cada campo */
+        .campo { 
+            margin-bottom: 18px; 
+            background: #fdfbff;
+            padding: 12px;
+            border: 1.5px solid #dcd1f0;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        /* Efecto cuando pasas el mouse por el recuadro */
+        .campo:focus-within {
+            border-color: #9b72cf;
+            box-shadow: 0 0 8px rgba(155, 114, 207, 0.2);
+            background: #ffffff;
+        }
+
+        label { 
+            display: block; 
+            font-weight: 600; 
+            font-size: 14px;
+            color: #5a4b76;
+            margin-bottom: 4px;
+        }
+
+        /* Inputs limpios y estilizados */
+        input, select { 
+            width: 100%; 
+            padding: 8px 4px; 
+            margin-top: 2px; 
+            box-sizing: border-box; 
+            border: none;
+            border-bottom: 1.5px dashed #c3b5e3;
+            background: transparent;
+            font-size: 15px;
+            color: #332244;
+            outline: none;
+        }
+
+        input:focus, select:focus {
+            border-bottom-style: solid;
+            border-bottom-color: #6f42c1;
+        }
+
+        /* Botón principal morado */
+        button { 
+            background-color: #8c61d6; 
+            color: white; 
+            border: none; 
+            padding: 12px; 
+            border-radius: 10px;
+            cursor: pointer; 
+            width: 100%; 
+            font-size: 16px; 
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(140, 97, 214, 0.3);
+            transition: background 0.2s ease;
+        }
+
+        button:hover { 
+            background-color: #7246be; 
+        }
+
+        /* Alerta de error estilizada */
+        .error { 
+            background-color: #fce8e6;
+            color: #cc3333; 
+            font-weight: bold; 
+            padding: 12px;
+            border-radius: 8px;
+            border-left: 4px solid #cc3333;
+            margin-bottom: 20px; 
+            font-size: 14px;
+            display: none; 
+        }
+
+        /* Estadísticas en un cuadro pastel súper tierno */
+        .estadisticas { 
+            margin-top: 25px; 
+            background: #f4effa; 
+            padding: 15px; 
+            border-radius: 12px; 
+            border: 1px solid #e3daf2;
+        }
+
+        .estadisticas h3 {
+            margin-top: 0;
+            color: #5a3399;
+            font-size: 16px;
+        }
+
+        .estadisticas p {
+            margin: 6px 0;
+            font-size: 14px;
+        }
+
+        .estadisticas span {
+            font-weight: bold;
+            color: #6f42c1;
+        }
+
+        /* Tarjetas de las mascotas registradas con bordes morados y fondo pastel */
+        .mascota-card { 
+            border: 1.5px solid #e1d7f3; 
+            padding: 15px; 
+            margin-top: 12px; 
+            border-radius: 12px; 
+            background: #faf8ff; 
+            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+        }
+
+        .mascota-card p {
+            margin: 5px 0;
+            font-size: 14px;
+        }
+
+        /* Botón atender verde pastel */
+        .btn-atender { 
+            background-color: #5cb874; 
+            width: auto; 
+            margin-top: 8px; 
+            padding: 6px 15px; 
+            font-size: 13px;
+            box-shadow: 0 3px 8px rgba(92, 184, 116, 0.2);
+        }
+        
+        .btn-atender:hover { 
+            background-color: #49a361; 
+        }
     </style>
 </head>
 <body>
@@ -24,7 +177,7 @@
 <div class="contenedor">
     <h1>Registro de Atención Veterinaria</h1>
     
-    <!-- Mostrar mensajes de error sin usar alert() -->
+    <!-- Aquí se mostrarán los mensajes de error sin usar alert() -->
     <div id="mensajeError" class="error"></div>
 
     <!-- Formulario -->
@@ -65,7 +218,7 @@
     <div id="listaMascotas"></div>
 </div>
 
-<!-- Conectar el archivo a js  -->
+<!-- Conectamos con nuestro archivo JavaScript -->
 <script src="script.js"></script>
 </body>
 </html>
