@@ -66,3 +66,49 @@ function registrarMascota() {
     mostrarMascotas();
     actualizarEstadisticas();
 }
+
+
+function mostrarMascotas() {
+    const listaDIV = document.getElementById("listaMascotas");
+    
+    // Limpiar la lista antigua para no duplicar elementos
+    listaDIV.innerHTML = "";
+
+    // Recorrer el arreglo usando un ciclo obligatorio
+    mascotas.forEach((mascota, indice) => {
+        // Crear la tarjetita contenedora
+        const tarjeta = document.createElement("div");
+        tarjeta.classList.add("mascota-card");
+
+        // Definir la palabra del estado
+        let estadoTexto = "Pendiente";
+        if (mascota.atendido === true) {
+            estadoTexto = "Atendido";
+        }
+
+        // Insertar la información básica de la mascota
+        tarjeta.innerHTML = `
+            <p><b>Mascota:</b> ${mascota.nombre} (${mascota.especie})</p>
+            <p><b>Propietario:</b> ${mascota.propietario}</p>
+            <p><b>Edad:</b> ${mascota.edad} años</p>
+            <p><b>Estado:</b> ${estadoTexto}</p>
+        `;
+
+        // Si la mascota está pendiente, le creamos dinámicamente el botón "Atender"
+        if (mascota.atendido === false) {
+            const botonAtender = document.createElement("button");
+            botonAtender.textContent = "Atender";
+            botonAtender.classList.add("btn-atender");
+            
+            // Le pasamos el índice de la mascota para saber cuál cambiar
+            botonAtender.onclick = function() {
+                cambiarEstado(indice);
+            };
+            
+            tarjeta.appendChild(botonAtender);
+        }
+
+        // Agregar la tarjetita a nuestra lista en el HTML
+        listaDIV.appendChild(tarjeta);
+    });
+}
