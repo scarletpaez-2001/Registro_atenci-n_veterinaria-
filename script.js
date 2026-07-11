@@ -112,3 +112,31 @@ function mostrarMascotas() {
         listaDIV.appendChild(tarjeta);
     });
 }
+
+function cambiarEstado(indice) {
+    // Cambiar la propiedad del objeto en el arreglo
+    mascotas[indice].atendido = true;
+
+    // Volver a renderizar las listas y los números
+    mostrarMascotas();
+    actualizarEstadisticas();
+}
+
+function actualizarEstadisticas() {
+    let pendientes = 0;
+    let atendidas = 0;
+
+    // Contr recorriendo el arreglo con un ciclo
+    for (let i = 0; i < mascotas.length; i++) {
+        if (mascotas[i].atendido === true) {
+            atendidas++;
+        } else {
+            pendientes++;
+        }
+    }
+
+    // Actualizar el DOM con las estadísticas calculadas
+    document.getElementById("totalMascotas").textContent = mascotas.length;
+    document.getElementById("totalPendientes").textContent = pendientes;
+    document.getElementById("totalAtendidas").textContent = atendidas;
+}
